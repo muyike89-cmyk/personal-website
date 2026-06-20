@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>柯国新 | KE GUOXIN - 建筑师个人作品集</title>
+    <style>
+        :root {
+            --cream: #faf9f7; /* 纸张质感背景 [1] */
+            --ink: #1a1a1a;   /* 墨迹黑文字 [1] */
+            --accent: #ba1e2b; /* 朱砂红点缀 [1] */
+            --gray: #666;
+            --light-gray: #e0e0e0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--cream); 
+            color: var(--ink); 
+            font-family: "Hiragino Sans GB", "PingFang SC", "Microsoft YaHei", serif; 
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(250, 249, 247, 0.9);
+        }
+        .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 0.3rem; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ink);
+            margin-left: 2rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.1rem;
+        }
+
+        /* 首页板块 */
+        .hero {
+            height: 100vh;
+            padding: 0 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .hero-name { font-size: 4rem; font-weight: 300; margin-bottom: 0.5rem; letter-spacing: 0.5rem; }
+        .hero-title { font-size: 1.2rem; color: var(--accent); margin-bottom: 2rem; letter-spacing: 0.2rem; }
+        .hero-statement { max-width: 600px; font-size: 1rem; color: var(--gray); border-left: 1px solid var(--accent); padding-left: 2rem; }
+
+        /* 章节通用样式 */
+        section { padding: 6rem 10%; }
+        .section-header { margin-bottom: 4rem; }
+        .section-header h2 { font-size: 1.8rem; font-weight: 400; letter-spacing: 0.2rem; position: relative; }
+        .section-header h2::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 40px; height: 2px; background: var(--accent); }
+
+        /* 履历板块 [2] */
+        .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .cv-item { margin-bottom: 2rem; }
+        .cv-date { color: var(--accent); font-weight: bold; font-size: 0.9rem; margin-bottom: 0.5rem; display: block; }
+        .cv-content h4 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+        .cv-content p { color: var(--gray); font-size: 0.9rem; }
+
+        /* 作品网格 [3-6] */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+        .work-card { text-decoration: none; color: inherit; transition: opacity 0.3s; }
+        .work-card:hover { opacity: 0.8; }
+        .work-img { width: 100%; height: 400px; background: var(--light-gray); object-fit: cover; margin-bottom: 1rem; }
+        .work-info h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .work-info span { font-size: 0.8rem; color: var(--gray); }
+
+        /* 列表项样式 [2, 7] */
+        .awards-list { list-style: none; }
+        .awards-list li { padding: 1rem 0; border-bottom: 1px solid var(--light-gray); display: flex; justify-content: space-between; align-items: center; }
+        .award-name { font-size: 0.95rem; }
+        .award-year { color: var(--gray); font-size: 0.85rem; }
+
+        /* 折叠/More 按钮逻辑 */
+        .more-content { display: none; margin-top: 2rem; }
+        .more-btn {
+            background: none;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.6rem 2rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            letter-spacing: 0.1rem;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+        .more-btn:hover { background: var(--accent); color: white; }
+
+        footer { padding: 4rem 10%; background: var(--ink); color: #fff; text-align: center; }
+        .contact-info { margin-top: 2rem; font-size: 0.9rem; opacity: 0.6; }
+
+        @media (max-width: 768px) {
+            .cv-grid, .works-grid { grid-template-columns: 1fr; }
+            .hero-name { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">KE GUOXIN</div>
+        <div class="nav-links">
+            <a href="#about">简历 BIOGRAPHY</a>
+            <a href="#works">作品 SELECTED WORKS</a>
+            <a href="#research">学术 RESEARCH</a>
+        </div>
+    </nav>
+
+    <!-- 首页介绍 [1, 2] -->
+    <section class="hero">
+        <h1 class="hero-name">柯国新</h1>
+        <div class="hero-title">中国建筑学会会员 / 高级工程师 / 国家一级注册建筑师</div>
+        <div class="hero-statement">
+            <p>基于南京大学的学术沉淀与十余年的大型工程实践，致力在复杂的城市/乡村环境下，探寻一种“朴素的东方思辨与精细化还原实现”。</p>
+            <p style="margin-top: 1rem;">设计理念：追求自我与自然的和谐，通过简约留白与现代细节，让空间产生气质与情感的共鸣。</p>
+        </div>
+    </section>
+
+    <!-- 职业履历板块 [2] -->
+    <section id="about">
+        <div class="section-header"><h2>职业历程 & 教育背景</h2></div>
+        <div class="cv-grid">
+            <div class="cv-column">
+                <div class="cv-item">
+                    <span class="cv-date">2023 - PRESENT</span>
+                    <div class="cv-content"><h4>上海尤安设计 | 设计总监</h4><p>主持多元化项目的创意与技术管控</p></div>
+                </div>
+                <div class="cv-item">
+                    <span class="cv-date">2020 - 2022</span>
+                    <div class="cv-content"><h4>霍普建筑设计 | 设计/研发副总监</h4><p>负责公建项目与产品研发</p></div>
+                </div>
+                <div class="cv-item">
+                    <span class="cv-date">2014 - 2020</span>
+                    <div class="cv-content"><h4>华东建筑设计研究总院 | 专业负责人/主创建筑师</h4><p>重大项目及综合体设计主创</p></div>
+                </div>
+            </div>
+            <div class="cv-column">
+                <div class="cv-item">
+                    <span class="cv-date">2011 - 2014</span>
+                    <div class="cv-content"><h4>南京大学建筑与城市规划学院 | 硕士</h4><p>建筑设计及其理论，导师丁沃沃教授，优秀硕士毕业生</p></div>
+                </div>
+                <div class="cv-item">
+                    <span class="cv-date">2007 - 2011</span>
+                    <div class="cv-content"><h4>南京大学建筑与城市规划学院 | 本科</h4><p>建筑学，优秀本科毕业生</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精选作品板块 [3-6, 8-10] -->
+    <section id="works" style="background: #f2f1ef;">
+        <div class="section-header"><h2>精选实践作品</h2></div>
+        <div class="works-grid">
+            <!-- 常驻显示项目 -->
+            <a href="#" class="work-card"><div class="work-img" style="background: url('images/liyuan_cover.jpg') center/cover;"></div><div class="work-info"><h3>广西·荔园饭店</h3><span>65,000㎡ | 2016 </span></div></a>
+            <a href="#" class="work-card"><div class="work-img" style="background: url('images/jinniu_cover.jpg') center/cover;"></div><div class="work-info"><h3>四川·金牛宾馆</h3><span>47,876㎡ | 2018 </span></div></a>
+            <a href="#" class="work-card"><div class="work-img" style="background: url('images/shengwan_cover.jpg') center/cover;"></div><div class="work-info"><h3>浙江·盛万文化中心</h3><span>49,890㎡ | 2021 </span></div></a>
+            <a href="#" class="work-card"><div class="work-img" style="background: url('images/huarun_cover.jpg') center/cover;"></div><div class="work-info"><h3>安徽·华润啤酒厂旧改</h3><span>148,037㎡ | 2023 </span></div></a>
+        </div>
+
+        <!-- 更多作品（折叠部分） -->
+        <div id="works-more" class="more-content">
+            <div class="works-grid">
+                <a href="#" class="work-card"><div class="work-img" style="background: url('images/daning_cover.jpg') center/cover;"></div><div class="work-info"><h3>上海·大宁自仪厂概念设计</h3><span>140,223㎡ | 2024 </span></div></a>
+                <a href="#" class="work-card"><div class="work-img" style="background: url('images/tiantai_cover.jpg') center/cover;"></div><div class="work-info"><h3>台州·天台方院</h3><span>1,002㎡ | 2019 </span></div></a>
+                <a href="#" class="work-card"><div class="work-img" style="background: url('images/chongli_cover.jpg') center/cover;"></div><div class="work-info"><h3>崇礼·冬奥温泉山庄4#</h3><span>12,318㎡ | 2020 </span></div></a>
+                <a href="#" class="work-card"><div class="work-img" style="background: url('images/shijiazhuang_cover.jpg') center/cover;"></div><div class="work-info"><h3>济南·保利鹊华赋</h3><span>82,514㎡ | 2023 </span></div></a>
+            </div>
+        </div>
+        <button class="more-btn" onclick="toggleContent('works-more', this)">VIEW MORE PROJECTS</button>
+    </section>
+
+    <!-- 学术研究与荣誉 [2, 7] -->
+    <section id="research">
+        <div class="section-header"><h2>学术研究 & 获奖荣誉</h2></div>
+        <div class="cv-grid">
+            <!-- 学术发表 -->
+            <div>
+                <h3>学术发表</h3>
+                <ul class="awards-list">
+                    <li><span class="award-name">《整合与分解——广西荔园饭店的设计与实现》</span><span class="award-year">建筑技艺</span></li>
+                    <li><span class="award-name">《内外之境——荔园饭店的都市庭园营造》</span><span class="award-year">华建筑</span></li>
+                    <li><span class="award-name">《建筑设计资料集》（第三版）总部办公篇章</span><span class="award-year">参编</span></li>
+                </ul>
+                <div id="research-more" class="more-content">
+                    <ul class="awards-list">
+                        <li><span class="award-name">《当代语境下的建筑形象塑造——广西荔园饭店设计笔记》</span><span class="award-year">华技艺</span></li>
+                        <li><span class="award-name">《形式语法作为中国传统城市格局秩序的描述方法》</span><span class="award-year">建筑与文化</span></li>
+                    </ul>
+                </div>
+                <button class="more-btn" onclick="toggleContent('research-more', this)">MORE RESEARCH</button>
+            </div>
+            
+            <!-- 荣誉奖项 -->
+            <div>
+                <h3>荣誉奖项</h3>
+                <ul class="awards-list">
+                    <li><span class="award-name">2024 年度缪斯国际设计大奖金奖</span><span class="award-year">MUSE GOLD</span></li>
+                    <li><span class="award-name">2019 全国建筑优秀工程勘察设计一等奖</span><span class="award-year">2019</span></li>
+                    <li><span class="award-name">2017上海市建筑学会第七届建筑创作奖佳作奖</span><span class="award-year">2017</span></li>
+                </ul>
+                <div id="awards-more" class="more-content">
+                    <ul class="awards-list">
+                        <li><span class="award-name">2022 年国华文旅·乡村振兴设计大赛全国优秀奖</span><span class="award-year">2022</span></li>
+                        <li><span class="award-name">2021 年度普霍杯高层建筑造型奖</span><span class="award-year">2021</span></li>
+                        <li><span class="award-name">2016 年度天台山民宿设计大赛一等奖</span><span class="award-year">2016</span></li>
+                    </ul>
+                </div>
+                <button class="more-btn" onclick="toggleContent('awards-more', this)">MORE AWARDS</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">KE GUOXIN</div>
+        <p>朴素思辨 · 精细实现</p>
+        <div class="contact-info">
+            T: +86-18516315455 | E: 332337033@qq.com<br>
+            © 2026 KE GUOXIN ARCHITECT. 
+        </div>
+    </footer>
+
+    <script>
+        function toggleContent(id, btn) {
+            const content = document.getElementById(id);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                btn.innerText = btn.innerText.replace("LESS", "MORE").replace("CLOSE", "MORE");
+            } else {
+                content.style.display = "block";
+                btn.innerText = "CLOSE / LESS INFO";
+            }
+        }
+    </script>
+</body>
+</html>
